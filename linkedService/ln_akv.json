@@ -1,0 +1,10 @@
+{
+	"name": "ln_akv",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://lab-accesspolicy-akv.vault.azure.net/"
+		}
+	}
+}
