@@ -1,0 +1,10 @@
+{
+	"name": "ln_adls_labaccountpom2023",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://labaccountpom2023.dfs.core.windows.net/"
+		}
+	}
+}
