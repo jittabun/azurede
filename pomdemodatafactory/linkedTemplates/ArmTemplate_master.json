@@ -7,6 +7,19 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "pomdemodatafactory"
 		},
+		"ln_sqldb_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ln_sqldb'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=labsqlservermasterdata202401.database.windows.net;Initial Catalog=labsqldb"
+		},
+		"ln_adls_labaccountpom2023_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://labaccountpom2023.dfs.core.windows.net/"
+		},
+		"ln_akv_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://lab-accesspolicy-akv.vault.azure.net/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -33,6 +46,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ln_sqldb_connectionString": {
+						"value": "[parameters('ln_sqldb_connectionString')]"
+					},
+					"ln_adls_labaccountpom2023_properties_typeProperties_url": {
+						"value": "[parameters('ln_adls_labaccountpom2023_properties_typeProperties_url')]"
+					},
+					"ln_akv_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ln_akv_properties_typeProperties_baseUrl')]"
 					}
 				}
 			},
