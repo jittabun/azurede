@@ -1,0 +1,42 @@
+{
+	"name": "pl_validate_file_exists",
+	"properties": {
+		"activities": [
+			{
+				"name": "get_file_meta_data_config",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat(\n    'select max(case when property_name = ''container_name'' then property_value end) as container_name,\n            max(case when property_name = ''folder_name'' then property_value end) as folder_name,\n            max(case when property_name = ''file_name'' then property_value end) as file_name\n    from dbo.rtl_metadata_config \n    where etl_job = ',\n    '''',\n    pipeline().parameters.p_etl_job_name,\n    ''''\n)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb_sql",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"p_etl_job_name": {
+				"type": "string",
+				"defaultValue": "load_emp_file"
+			}
+		},
+		"annotations": []
+	}
+}
